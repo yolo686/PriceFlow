@@ -7,6 +7,6 @@
 ## 后端
 使用springBoot框架，使用IDEA启动后，默认允许的端口号为：localhost:8080
 ### API文档
-启用后端项目后，使用swagger自动生成接口文档，访问地址为![http://localhost:8080/swagger-ui/index.html#/]
+使用swagger自动生成接口文档,启用后端项目后，直接访问API接口文档<http://localhost:8080/swagger-ui/index.html#/>
 接口文档效果图如下图所示：
-[接口文档图](img/API.png)
+![接口文档图](img/API.png)

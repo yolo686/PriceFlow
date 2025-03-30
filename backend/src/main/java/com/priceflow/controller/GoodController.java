@@ -1,13 +1,12 @@
 package com.priceflow.controller;
 
-import com.priceflow.dto.Result;
+import com.priceflow.pojo.vo.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,10 +37,10 @@ public class GoodController {
     }
 
 
-    @Operation(summary = "历史价格", description = "获取商品历史价格记录")
+    @Operation(summary = "历史搜索记录", description = "获取用户的历史搜索记录")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "历史价格列表"),
-            @ApiResponse(responseCode = "404", description = "没有历史记录")
+            @ApiResponse(responseCode = "401", description = "用户不存在")
     })
     @GetMapping(value = "/history")
     public Result getGoodHistory() {

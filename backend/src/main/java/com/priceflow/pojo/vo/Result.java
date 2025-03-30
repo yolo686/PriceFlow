@@ -1,4 +1,4 @@
-package com.priceflow.dto;
+package com.priceflow.pojo.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -32,6 +32,7 @@ public class Result<T> implements Serializable {
     public static <T> Result<T> success() {
         Result<T> result = new Result<T>();
         result.code = 200;
+        result.msg = "OK";
         return result;
     }
 
@@ -39,10 +40,11 @@ public class Result<T> implements Serializable {
         Result<T> result = new Result<T>();
         result.data = object;
         result.code = 200;
+        result.msg = "OK";
         return result;
     }
 
-    public static <T> Result<T> error(Integer code, String msg) {
+    public static <T> Result<T> fail(Integer code, String msg) {
         Result result = new Result();
         result.msg = msg;
         result.code = code;
