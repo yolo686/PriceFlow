@@ -25,4 +25,10 @@ public interface NoticeMapper {
 
     @Select("select * from notice where user_id = #{userId}")
     List<Notice> selectByUserId(Integer user);
+
+
+    void update(Notice notice);
+
+    @Select("select * from notice where id >= #{id} and is_notice=false limit 10")
+    List<Notice> selectBatch(int id);
 }

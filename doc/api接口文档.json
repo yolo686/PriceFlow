@@ -432,13 +432,32 @@
                 "summary": "商品搜索",
                 "description": "根据关键字搜索商品,自由选择拼多多、淘宝、京东等多个平台",
                 "operationId": "searchProducts",
+                "parameters": [
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "platform",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "搜索结果",
                         "content": {
                             "*/*": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Result"
+                                    "$ref": "#/components/schemas/ResultListGoodVO"
                                 }
                             }
                         }
@@ -460,7 +479,7 @@
                         "content": {
                             "*/*": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Result"
+                                    "$ref": "#/components/schemas/ResultListHistory"
                                 }
                             }
                         }
@@ -470,7 +489,7 @@
                         "content": {
                             "*/*": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Result"
+                                    "$ref": "#/components/schemas/ResultListHistory"
                                 }
                             }
                         }
@@ -486,11 +505,35 @@
                 "summary": "AI购买建议",
                 "description": "询问AI获取商品购买建议",
                 "operationId": "getAiAdvice",
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "建议内容",
                         "content": {
-                            "text/event-stream": {}
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "查询失败",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
                         }
                     }
                 }
@@ -799,6 +842,91 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/Notice"
+                        }
+                    }
+                },
+                "description": "返回结果"
+            },
+            "GoodVO": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "img": {
+                        "type": "string"
+                    },
+                    "shopName": {
+                        "type": "string"
+                    },
+                    "platform": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "detailUrl": {
+                        "type": "string"
+                    },
+                    "subscribed": {
+                        "type": "boolean"
+                    }
+                },
+                "description": "商品搜索信息"
+            },
+            "ResultListGoodVO": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GoodVO"
+                        }
+                    }
+                },
+                "description": "返回结果"
+            },
+            "History": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "content": {
+                        "type": "string"
+                    },
+                    "time": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "ResultListHistory": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/History"
                         }
                     }
                 },

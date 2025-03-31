@@ -39,7 +39,7 @@ public class SubscriptionService {
         return Result.success();
     }
 
-    private Subscription transform(Good good) {
+    public static Subscription transform(Good good) {
         Subscription subscription = new Subscription();
         subscription.setUserId(UserHolder.getUser());
         subscription.setDescription(good.getDescription());

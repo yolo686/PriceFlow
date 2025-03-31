@@ -1,5 +1,7 @@
 package com.priceflow.utils;
 
+import com.priceflow.pojo.entity.Notice;
+
 import java.util.regex.Pattern;
 
 /**
@@ -21,8 +23,20 @@ public class Email {
         return EMAIL_PATTERN.matcher(email).matches();
     }
 
+
+    // 发送验证码到邮箱
+    // todo
     public static boolean send(String email, String code) {
         System.out.println("send email to " + email + " with code " + code);
         return true;
     }
+
+    // 发送降价通知到用户邮箱
+    // todo
+    public static boolean remind(String email, Notice notice) {
+        System.out.println("send remind email to " + email + " with notice ");
+        return true;
+    }
+
+
 }

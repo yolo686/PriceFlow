@@ -1,6 +1,7 @@
 package com.priceflow;
 
 import com.priceflow.mapper.UserMapper;
+import com.priceflow.utils.DatabaseScanner;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ class PriceFlowApplicationTest {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private DatabaseScanner databaseScanner;
 
 
     @Autowired
@@ -41,6 +45,7 @@ class PriceFlowApplicationTest {
     public void t2() {
         // 测试Mapper
 //        userMapper.insertUser();
+        databaseScanner.scan();
     }
 
 }

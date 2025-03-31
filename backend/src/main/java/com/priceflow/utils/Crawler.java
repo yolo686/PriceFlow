@@ -1,6 +1,7 @@
 package com.priceflow.utils;
 
 import com.priceflow.pojo.entity.Good;
+import com.priceflow.pojo.entity.Notice;
 import com.priceflow.pojo.entity.Subscription;
 
 import java.math.BigDecimal;
@@ -23,8 +24,9 @@ public class Crawler {
      *            如101：表示从拼多多和淘宝获取数据
      * @return
      */
+    // todo
     public static List<Good> crawl(String content,int type) {
-        // todo
+
         // 模拟爬取数据
         List<Good> goods = new ArrayList<>();
         Good good1 = new Good();
@@ -36,8 +38,16 @@ public class Crawler {
         return goods;
     }
 
-    // 更新订阅商品的价格，将商品的价格重新再爬取一遍
+    // 更新订阅商品的价格，将商品的价格重新再爬取一遍，并更新字段price
+    // todo
     public static void update(List<Subscription> subscriptions) {
-        // todo
+
+    }
+
+    // 查询商品是否降价,返回商品现在的价格
+    // todo
+    public static BigDecimal updatePrice(Notice notice) {
+
+        return new BigDecimal(notice.getPresentPrice().floatValue()-1);
     }
 }
