@@ -20,6 +20,15 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 83430154@qq.com
+    password: jgonhfxxahflbchb # 注意：是授权码，不是QQ登录密码
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+    default-encoding: UTF-8
 
 mybatis:
     #mapper配置文件
