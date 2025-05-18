@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
+import static com.priceflow.utils.AIQuery.queryAsync;
 
 
 /**
@@ -32,7 +35,16 @@ public class GoodService {
     private GoodMapper goodMapper;
 
     public Result queryAiAdvice(String query) {
-        String advice = AIQuery.query(query);
+        String advice = null;
+        try {
+            // 调用异步方法
+            CompletableFuture<String> future = queryAsync(query);
+
+            // 阻塞等待结果（不推荐在生产环境长时间阻塞）
+            advice = future.join(); // 或使用 future.get()
+        } catch (Exception e) {
+            return Result.fail(500,"查询失败");
+        }
         if(advice == null) {
             return Result.fail(500,"查询失败");
         }

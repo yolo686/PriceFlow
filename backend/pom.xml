@@ -85,6 +85,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
         </dependency>
+        <!--coze AI智能体  -->
+        <dependency>
+            <groupId>com.coze</groupId>
+            <artifactId>coze-api</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 
     <build>
